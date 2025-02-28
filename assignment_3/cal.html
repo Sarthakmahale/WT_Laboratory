@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        function appendValue(value) {
+            document.f1.t1.value += value;
+        }
+
+        function calculateResult() {
+            try {
+                document.f1.t1.value = eval(document.f1.t1.value);
+            } catch (e) {
+                document.f1.t1.value = "Error";
+            }
+        }
+
+        function clearInput() {
+            document.f1.t1.value = "";
+        }
+
+        function backspace() {
+            let currentValue = document.f1.t1.value;
+            document.f1.t1.value = currentValue.slice(0, -1);
+        }
+    </script>
+
+    <link rel="stylesheet" href="cal.css">
+</head>
+<body>
+    <form name="f1" id="s1">
+        <table>
+            <tr>
+                <td colspan="3"><input type="text" name="t1" value="" readonly/></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendValue('1')" value="1"/></td>
+                <td><input type="button" onclick="appendValue('2')" value="2"/></td>
+                <td><input type="button" onclick="appendValue('3')" value="3"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendValue('4')" value="4"/></td>
+                <td><input type="button" onclick="appendValue('5')" value="5"/></td>
+                <td><input type="button" onclick="appendValue('6')" value="6"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendValue('7')" value="7"/></td>
+                <td><input type="button" onclick="appendValue('8')" value="8"/></td>
+                <td><input type="button" onclick="appendValue('9')" value="9"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendValue('0')" value="0"/></td>
+                <td><input type="button" onclick="appendValue('.')" value="."/></td>
+                <td><input type="button" onclick="appendValue('+')" value="+"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendValue('-')" value="-"/></td>
+                <td><input type="button" onclick="appendValue('*')" value="*"/></td>
+                <td><input type="button" onclick="appendValue('/')" value="/"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="clearInput()" value="Clear" class="clear-button"/></td>
+                <td><input type="button" onclick="backspace()" value="⌫" class="backspace-button"/></td>
+                <td><input type="button" onclick="calculateResult()" value="=" class="equal-button"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
